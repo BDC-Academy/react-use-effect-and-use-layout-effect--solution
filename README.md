@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+## Voorwaarden
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Naast de voorwaarden die de training zelf voorschrijft moet je een aantal basis concepten van React die in de vorige opdrachten behandeld hebben begrepen:
 
-## Available Scripts
+- Wat is een React component
+- Wat zijn React component props
+- Wat zijn React component state
+- Wat zijn React hooks
+- Dat een React component een lifecycle heeft
 
-In the project directory, you can run:
+## Benodigdheden (Opdracht specifiek)
 
-### `npm start`
+- Repository from Github (Classroom) **react-use-effect-and-use-layout-effect**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Startpunt
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+… bestaande component die wat props binnen krijgt en state bevat
 
-### `npm test`
+## Voorbereiding
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Trainer:
 
-### `npm run build`
+- Iedereen toegang geven tot de opdracht via Github classroom
+- Uitgebreide uitleg geven over useEffect en component lifecycle
+- Eventueel sheet, video&#39;s en ander begeleidend materiaal beschikbaar stellen
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Deelnemer:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Repository downloaden
+- &#39;npm install&#39; uitvoeren en controleren of het werkt met &#39;npm start&#39;
+- Eventueel voorgaande opdrachten bekijken
+- Code die al in de repository zit bekijken
+- Begeleidend materiaal binnenhalen
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Leerdoel
 
-### `npm run eject`
+Leren wat een React component lifecycle is, wat het belang van de useEffect en useLayoutEffect hooks daarin zijn en hoe je die kunt gebruiken en waarvoor.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Kort oude lifecycle methodes gezien (didMount, didUpdate, and willUnmount) maar daarna ook weer vergeten 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Korte omschrijving
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+We hebben gezien hoe de &#39;signature&#39; van een component eruit ziet: Een component is een functie / class die props ontvangt en een react/jsx element returned. Daarnaast heeft een component een zogenaamde lifecycle (mount, update, unmount) en een functie waarmee je kan inhaken (vandaar hook) op specifieke momenten in die lifecycle en daarmee &#39;side-effects&#39; kunt uitvoeren (vandaar use **Effect** ).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Side-effects zijn acties die niet in de &#39;normale topdown render flow&#39; van de React component passen of uitgevoerd kunnen worden. Hierbij kun je b.v. denken aan iets simpels als het aanpassen van de document.title (tekst in browser tabblad), maar ook asynchrone calls naar de server om data op te halen, een timer instellen om een actie later uit te voeren of een andere belangrijke: een actie uitvoeren omdat/nadat de state van een component is veranderd. React heeft daarvoor twee hooks, useEffect en useLayoutEffect die allebei hetzelfde werken en dezelfde signature hebben maar op een net iets ander moment worden aangeroepen en daarom voor verschillende zaken gebruikt worden.
 
-## Learn More
+&quot;_Put your side-effect logic into the callback function, then use the dependencies argument to control when you want the side-effect to run._ _That&#39;s the sole purpose of useEffect()_&quot;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+_Note: je kunt meerdere useEffect en useLayoutEffect hooks gebruiken in een component._
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+_Reminder: Als je state kunt berekenen op basis van andere props of state dan hoort het geen state te zijn._
+
+## Eindresultaat
+
+Aan het einde van de opdracht hebben we de useEffect en useLayoutEffect verschillende keren gebruikt om de volgende &#39;side-effects&#39; uit te voeren:
+
+- Actie uitvoeren wanneer de component is geïnitialiseerd / gemount
+- Reageren op het feit dat er iets is veranderd in de props die we binnen krijgen
+- Lokale state veranderen op basis van een verandering in andere lokale state
+- Code vertraagd uitvoeren (asynchroone) met een timeout EN deze weer opruimen
+- De DOM updaten buiten React om
+
+## Libraries
+
+- React
+
+## Begeleidend materiaal
+
+- Component lifecycle diagram van een class component
+- useEffect diagram
+
+## Links
+
+- [https://dmitripavlutin.com/react-useeffect-explanation/](https://dmitripavlutin.com/react-useeffect-explanation/)
+- [https://blog.bhanuteja.dev/the-lifecycle-of-react-hooks-component](https://blog.bhanuteja.dev/the-lifecycle-of-react-hooks-component)
+- [https://kentcdodds.com/blog/useeffect-vs-uselayouteffect](https://kentcdodds.com/blog/useeffect-vs-uselayouteffect)
+- [https://linguinecode.com/post/when-to-use-useref-and-uselayouteffect](https://linguinecode.com/post/when-to-use-useref-and-uselayouteffect)
+- [https://melvingeorge.me/blog/focus-input-tag-using-hooks-reactjs](https://melvingeorge.me/blog/focus-input-tag-using-hooks-reactjs)
