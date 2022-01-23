@@ -1,10 +1,68 @@
-import React from 'react';
-import './App.css';
+import "./App.css";
+
+import React, { useEffect, useState } from "react";
+
+import List, { ListItem } from "./common/list";
+import Search from "./common/search";
+
+const items: ListItem[] = [
+  { id: "1", label: "Apples", color: "red" },
+  { id: "2", label: "Blueberries", color: "blue" },
+  { id: "3", label: "Pears", color: "green" },
+  { id: "4", label: "Oranges", color: "orange" }
+];
 
 function App() {
-  return (
-    <div className="App">
+  const [filterValue, setFilterValue] = useState("");
+  const [selectedItem, setSelectedItem] = useState<ListItem>();
+  const [filteredItems, setFilteredItems] = useState<ListItem[]>(items);
+  const [searching, setSearching] = useState(false);
 
+  const handleFilterChange = (value: string) => { setFilterValue(value) };
+  const handleClick = (item: ListItem) => { setSelectedItem(item); }
+
+  // const filteredItems = items.filter(({ label }) => label.toLowerCase().includes(filterValue.toLowerCase()));
+
+  //TODO: use the useEffect hook to clear the searchfield when the selectedItem changes.
+  useEffect(() => {
+    setFilterValue("");
+  }, [selectedItem]);
+
+  //TODO: use the useEffect hook to delay the filtering of the list for 2 seconds.
+  // The timer (setTimeout) must be started every time filteredValue changes.
+  // Make sure to clear the old timeout when a new one is created (see what happens if you don't ;) )
+  // Note: You will need to store the filteredItems in state to be able to rerender.
+  // Extra: add a visual indicator that tells the user the app is 'searching'
+  useEffect(() => {
+    setSearching(true);
+    const timer = setTimeout(() => {
+      setFilteredItems(items.filter(({ label }) => label.toLowerCase().includes(filterValue.toLowerCase())));
+      setSearching(false);
+    }, filterValue !== "" ? 1000 : 0);
+
+    return () => {
+      clearTimeout(timer);
+      setSearching(false);
+    }
+  }, [filterValue]);
+
+  return (
+    <div className="app">
+      <div>
+        <Search
+          value={filterValue}
+          onValueChange={handleFilterChange}
+        />
+        <List
+          items={filteredItems}
+          onItemClick={handleClick}
+          selectedItemId={selectedItem?.id}
+        />
+        {!!searching && <div>...searching</div>}
+      </div>
+      <div className="app-content">
+        Item selected: {selectedItem?.label || 'none'}
+      </div>
     </div>
   );
 }
