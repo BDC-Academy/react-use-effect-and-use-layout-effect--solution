@@ -36,7 +36,7 @@ Deelnemer:
 
 Leren wat een React component lifecycle is, wat het belang van de useEffect en useLayoutEffect hooks daarin zijn en hoe je die kunt gebruiken en waarvoor.
 
-Kort oude lifecycle methodes gezien (didMount, didUpdate, and willUnmount) maar daarna ook weer vergeten 
+Kort oude lifecycle methodes gezien (didMount, didUpdate, and willUnmount) maar daarna ook weer vergeten :)
 
 ## Korte omschrijving
 
@@ -76,3 +76,6 @@ Aan het einde van de opdracht hebben we de useEffect en useLayoutEffect verschil
 - [https://kentcdodds.com/blog/useeffect-vs-uselayouteffect](https://kentcdodds.com/blog/useeffect-vs-uselayouteffect)
 - [https://linguinecode.com/post/when-to-use-useref-and-uselayouteffect](https://linguinecode.com/post/when-to-use-useref-and-uselayouteffect)
 - [https://melvingeorge.me/blog/focus-input-tag-using-hooks-reactjs](https://melvingeorge.me/blog/focus-input-tag-using-hooks-reactjs)
+
+![useEffect callback](https://github.com/BDC-Academy/react-use-effect-and-use-layout-effect/blob/main/_assigment/react-useeffect-callback.svg?raw=true)
+![react hook flow](https://github.com/BDC-Academy/react-use-effect-and-use-layout-effect/blob/main/_assigment/react-hook-flow.png?raw=true)
