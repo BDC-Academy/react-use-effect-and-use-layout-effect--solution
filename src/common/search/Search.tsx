@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import "./search.css";
 
 interface SearchProps {
@@ -14,10 +14,10 @@ const Search = (props: SearchProps) => {
     onValueChange
   } = props;
 
-  //TODO: use the useEffect hook to initially put focus on the input field
+  //TODO: use the correct effect hook to initially put focus on the input field
   // as soon as it has been added to the DOM. 
   // Note: you will need a ref bound to the input to call the focus() function on the input element.
-  useEffect(() => {
+  useLayoutEffect(() => {
     inputRef.current?.focus();
   }, []);
 
