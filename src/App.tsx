@@ -18,8 +18,13 @@ function App() {
   const [filteredItems, setFilteredItems] = useState<ListItem[]>(items);
   const [searching, setSearching] = useState(false);
 
-  const handleFilterChange = (value: string) => { setFilterValue(value) };
-  const handleClick = (item: ListItem) => { setSelectedItem(item); }
+  const handleFilterChange = (value: string) => {
+    setFilterValue(value)
+  };
+
+  const handleClick = (item: ListItem) => {
+    setSelectedItem(item);
+  }
 
   // const filteredItems = items.filter(({ label }) => label.toLowerCase().includes(filterValue.toLowerCase()));
 
@@ -30,19 +35,26 @@ function App() {
 
   //TODO: use the correct effect hook to delay the filtering of the list for 2 seconds.
   // The timer (setTimeout) must be started every time filteredValue changes.
-  // Make sure to clear the old timeout when a new one is created (see what happens if you don't ;) )
+  // Make sure to clear the old timeout when a new one is created (see what happens if you don't)
   // Note: You will need to store the filteredItems in state to be able to rerender.
-  // Extra: add a visual indicator that tells the user the app is 'searching'
+  // Extra: add a visual indicator that tells the user the app is 'searching'.
+  // Extra: if the searchfield is emptied, immediately show the whole list again (no delay).
+  // Extra: lets put some debugger statements here and there and see what's going on.
   useEffect(() => {
-    setSearching(true);
-    const timer = setTimeout(() => {
-      setFilteredItems(items.filter(({ label }) => label.toLowerCase().includes(filterValue.toLowerCase())));
-      setSearching(false);
-    }, filterValue !== "" ? 1000 : 0);
+    if (filterValue === "") {
+      setFilteredItems(items);
+    } else {
+      setSearching(true);
 
-    return () => {
-      clearTimeout(timer);
-      setSearching(false);
+      const timer = setTimeout(() => {
+        setFilteredItems(items.filter(({ label }) => label.toLowerCase().includes(filterValue.toLowerCase())));
+        setSearching(false);
+      }, 1000);
+
+      return () => {
+        clearTimeout(timer);
+        setSearching(false);
+      }
     }
   }, [filterValue]);
 
