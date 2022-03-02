@@ -28,12 +28,12 @@ function App() {
 
   // const filteredItems = items.filter(({ label }) => label.toLowerCase().includes(filterValue.toLowerCase()));
 
-  //TODO: use the correct effect hook to clear the searchfield when the selectedItem changes.
+  //TODO: 3. use the correct effect hook to clear the searchfield when the selectedItem changes.
   useEffect(() => {
     setFilterValue("");
   }, [selectedItem]);
 
-  //TODO: use the correct effect hook to delay the filtering of the list for 2 seconds.
+  //TODO: 4. use the correct effect hook to delay the filtering of the list for 2 seconds.
   // The timer (setTimeout) must be started every time filteredValue changes.
   // Make sure to clear the old timeout when a new one is created (see what happens if you don't)
   // Note: You will need to store the filteredItems in state to be able to rerender.
