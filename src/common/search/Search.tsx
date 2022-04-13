@@ -14,7 +14,7 @@ const Search = (props: SearchProps) => {
     onValueChange
   } = props;
 
-  //TODO: 1. use the correct effect hook to initially put focus on the input field
+  //TODO: 1 use the correct effect hook to initially put focus on the input field
   // as soon as it has been added to the DOM. 
   // Note: you will need a ref bound to the input to call the focus() function on the input element.
   useLayoutEffect(() => {

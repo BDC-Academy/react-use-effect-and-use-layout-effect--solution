@@ -28,7 +28,7 @@ const List = (props: ListProps) => {
     selectedItemId,
   } = props;
 
-  //TODO: 2. use the correct effect hook to make the bottom border of the list dashed
+  //TODO: 2 use the correct effect hook to make the bottom border of the list dashed
   // when the selected item is not visible, i.e. is not present in the items list.
   // Note: you can use a ref or state to do this.
   useEffect(() => {
